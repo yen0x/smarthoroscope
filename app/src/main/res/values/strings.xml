@@ -16,6 +16,42 @@
         <item>Vierge</item>
     </string-array>
 
+    <string-array name="love_category">
+        <item >Rencontres</item>
+        <item >Conjoint</item>
+        <item >Passion</item>
+        <item >Sexe</item>
+    </string-array>
+    <string-array name="mood_category">
+        <item >Sociabilité</item>
+        <item >Emotions</item>
+        <item >Optimisme</item>
+        <item >Confiance</item>
+    </string-array>
+    <string-array name="job_category">
+        <item >Environnement</item>
+        <item >Collaborateurs</item>
+        <item >Hiérarchie</item>
+        <item >Surmenage</item>
+    </string-array>
+    <string-array name="health_category">
+        <item >Psychisme</item>
+        <item >Energie</item>
+        <item >Forme Sportive</item>
+        <item >Métabolisme</item>
+    </string-array>
+    <string-array name="categories">
+        <item >love</item>
+        <item >mood</item>
+        <item >health</item>
+        <item >job</item>
+    </string-array>
+
+    <string name="love">Amour</string>
+    <string name="mood">Humeur</string>
+    <string name="health">Santé</string>
+    <string name="job">Travail</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_horoscope">HoroscopeActivity</string>

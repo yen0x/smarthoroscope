@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity//
     @Override
     public void onListFragmentInteraction(SignContent.SignItem item) {
         Intent intent = new Intent(this, HoroscopeActivity.class);
+        intent.putExtra("sign", item.name);
         startActivity(intent);
     }
 }
