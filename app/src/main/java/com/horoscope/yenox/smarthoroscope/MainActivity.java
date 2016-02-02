@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
 import com.horoscope.yenox.smarthoroscope.fragments.SignListFragment;
-import com.horoscope.yenox.smarthoroscope.fragments.sign.SignContent;
+import com.horoscope.yenox.smarthoroscope.models.ui.SignContent;
 
 import java.util.Arrays;
 

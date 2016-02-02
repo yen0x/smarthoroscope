@@ -11,7 +11,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.horoscope.yenox.smarthoroscope.R;
-import com.horoscope.yenox.smarthoroscope.fragments.sign.SignContent;
+import com.horoscope.yenox.smarthoroscope.adapters.SignListViewAdapter;
+import com.horoscope.yenox.smarthoroscope.models.ui.SignContent;
 
 /**
  * A fragment representing a list of Items.

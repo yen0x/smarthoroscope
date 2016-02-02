@@ -1,4 +1,4 @@
-package com.horoscope.yenox.smarthoroscope.fragments.sign;
+package com.horoscope.yenox.smarthoroscope.models.ui;
 
 import java.util.ArrayList;
 import java.util.List;

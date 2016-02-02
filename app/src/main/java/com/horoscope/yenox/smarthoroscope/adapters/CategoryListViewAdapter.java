@@ -1,6 +1,4 @@
-package com.horoscope.yenox.smarthoroscope.fragments;
-
-import java.util.List;
+package com.horoscope.yenox.smarthoroscope.adapters;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -9,35 +7,37 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.horoscope.yenox.smarthoroscope.R;
-import com.horoscope.yenox.smarthoroscope.fragments.sign.SignContent;
+import com.horoscope.yenox.smarthoroscope.fragments.CategoryFragment;
+import com.horoscope.yenox.smarthoroscope.models.ui.CategoryContent;
+
+import java.util.List;
 
 /**
  * {@link RecyclerView.Adapter} that can display a
- * {@link com.horoscope.yenox.smarthoroscope.fragments.sign.SignContent.SignItem}
+ * {@link CategoryContent.CategoryItem}
  * and makes a call to the specified
- * {@link SignListFragment.OnListFragmentInteractionListener}. TODO: Replace the
- * implementation with code for your data type.
+ * {@link CategoryFragment.OnListFragmentInteractionListener}.
  */
-public class SignListViewAdapter extends RecyclerView.Adapter<SignListViewAdapter.ViewHolder> {
+public class CategoryListViewAdapter extends RecyclerView.Adapter<CategoryListViewAdapter.ViewHolder> {
 
-    private final List<SignContent.SignItem> mValues;
-    private final SignListFragment.OnListFragmentInteractionListener mListener;
+    private final List<CategoryContent.CategoryItem> mValues;
+    private final CategoryFragment.OnListFragmentInteractionListener mListener;
 
-    public SignListViewAdapter(List<SignContent.SignItem> items, SignListFragment.OnListFragmentInteractionListener listener) {
+    public CategoryListViewAdapter(List<CategoryContent.CategoryItem> items, CategoryFragment.OnListFragmentInteractionListener listener) {
         mValues = items;
         mListener = listener;
     }
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_sign, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_horoscope_category_attr, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
         holder.mItem = mValues.get(position);
-        holder.mSignNameView.setText(mValues.get(position).name);
+        holder.mAttrNameView.setText(mValues.get(position).name);
 
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,18 +60,18 @@ public class SignListViewAdapter extends RecyclerView.Adapter<SignListViewAdapte
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         public final View mView;
-        public final TextView mSignNameView;
-        public SignContent.SignItem mItem;
+        public final TextView mAttrNameView;
+        public CategoryContent.CategoryItem mItem;
 
         public ViewHolder(View view) {
             super(view);
             mView = view;
-            mSignNameView = (TextView) view.findViewById(R.id.sign_name);
+            mAttrNameView = (TextView) view.findViewById(R.id.attribute_name);
         }
 
         @Override
         public String toString() {
-            return super.toString() + " '" + mSignNameView.getText() + "'";
+            return super.toString() + " '" + mAttrNameView.getText() + "'";
         }
     }
 }

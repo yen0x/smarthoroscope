@@ -7,25 +7,24 @@ import android.support.design.widget.TabLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 
-import android.widget.TextView;
+import android.widget.Toast;
 
 import com.horoscope.yenox.smarthoroscope.adapters.CategoryPagerAdapter;
+import com.horoscope.yenox.smarthoroscope.fragments.CategoryFragment;
 import com.horoscope.yenox.smarthoroscope.helpers.HoroscopeHelper;
 import com.horoscope.yenox.smarthoroscope.models.Category;
+import com.horoscope.yenox.smarthoroscope.models.ui.CategoryContent;
 import com.horoscope.yenox.smarthoroscope.models.Horoscope;
 
-public class HoroscopeActivity extends AppCompatActivity {
+public class HoroscopeActivity extends AppCompatActivity
+        implements CategoryFragment.OnListFragmentInteractionListener {
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -60,7 +59,7 @@ public class HoroscopeActivity extends AppCompatActivity {
         }
 
         // Create the adapter that will return a fragment for each of the sections
-        mCategoryPagerAdapter = new CategoryPagerAdapter(getSupportFragmentManager(), horoscope);
+        mCategoryPagerAdapter = new CategoryPagerAdapter(getSupportFragmentManager(), horoscope, this);
 
         // Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) findViewById(R.id.container);
@@ -103,5 +102,10 @@ public class HoroscopeActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onListFragmentInteraction(CategoryContent.CategoryItem item) {
+        Toast.makeText(HoroscopeActivity.this, item.name, Toast.LENGTH_SHORT).show();
     }
 }

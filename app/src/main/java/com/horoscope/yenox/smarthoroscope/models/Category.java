@@ -27,6 +27,10 @@ public class Category {
         score /= attributes.values().size();
     }
 
+    public Map<String, Integer> getAttributes() {
+        return attributes;
+    }
+
     public String getName() {
         return name;
     }
