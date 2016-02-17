@@ -64,6 +64,8 @@ public class HoroscopeActivity extends AppCompatActivity
         // Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) findViewById(R.id.container);
         mViewPager.setAdapter(mCategoryPagerAdapter);
+        // Keep all pages in memory
+        mViewPager.setOffscreenPageLimit(3);
 
         // synch pager and tabs
         tabLayout.setupWithViewPager(mViewPager);

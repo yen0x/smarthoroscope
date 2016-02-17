@@ -49,6 +49,7 @@ public class CategoryFragment extends Fragment {
         ArrayList<String> nameList = new ArrayList<>();
         for(Map.Entry<String, Integer> attr : category.getAttributes().entrySet()) {
             nameList.add(attr.getKey());
+            args.putInt(attr.getKey(), attr.getValue());
         }
         args.putStringArrayList(ARG_ATTR_NAME_LIST, nameList);
         fragment.setArguments(args);
@@ -80,7 +81,7 @@ public class CategoryFragment extends Fragment {
             ArrayList<String> nameList = getArguments().getStringArrayList(ARG_ATTR_NAME_LIST);
             List<CategoryContent.CategoryItem> categoryItems = new ArrayList<>();
             for (String attr : nameList) {
-                categoryItems.add(new CategoryContent.CategoryItem(attr, 0));
+                categoryItems.add(new CategoryContent.CategoryItem(attr, getArguments().getInt(attr)));
             }
             recyclerView.setAdapter(new CategoryListViewAdapter(categoryItems, mListener));
         }

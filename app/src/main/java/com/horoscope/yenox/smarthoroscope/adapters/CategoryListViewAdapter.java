@@ -5,12 +5,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.horoscope.yenox.smarthoroscope.R;
 import com.horoscope.yenox.smarthoroscope.fragments.CategoryFragment;
 import com.horoscope.yenox.smarthoroscope.models.ui.CategoryContent;
 
 import java.util.List;
+
+import at.grabner.circleprogress.CircleProgressView;
 
 /**
  * {@link RecyclerView.Adapter} that can display a
@@ -38,6 +41,7 @@ public class CategoryListViewAdapter extends RecyclerView.Adapter<CategoryListVi
     public void onBindViewHolder(final ViewHolder holder, int position) {
         holder.mItem = mValues.get(position);
         holder.mAttrNameView.setText(mValues.get(position).name);
+        holder.mCpv.setValueAnimated(0, mValues.get(position).score, 900);
 
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,12 +65,14 @@ public class CategoryListViewAdapter extends RecyclerView.Adapter<CategoryListVi
     public class ViewHolder extends RecyclerView.ViewHolder {
         public final View mView;
         public final TextView mAttrNameView;
+        public final CircleProgressView mCpv;
         public CategoryContent.CategoryItem mItem;
 
         public ViewHolder(View view) {
             super(view);
             mView = view;
             mAttrNameView = (TextView) view.findViewById(R.id.attribute_name);
+            mCpv = (CircleProgressView) view.findViewById(R.id.cpv);
         }
 
         @Override
