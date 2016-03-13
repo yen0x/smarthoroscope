@@ -54,7 +54,7 @@ public class HoroscopeHelper {
 
     private static Horoscope getHoroscopeFromNetwork(Context context, String signName) throws IOException, JSONException {
         try {
-            URL url = new URL(String.format("http://yenox.eu:8200/stats?sign=%s&date=%s",//
+            URL url = new URL(String.format(context.getString(R.string.horoscope_url, null),//
                     signName, new SimpleDateFormat("yyyyMMdd").format(new Date())));
             AsyncTask<URL, Void, InputStream> httpget = new NetworkGetTask().execute(url);
             return buildFromJson(context, httpget.get());
@@ -92,7 +92,7 @@ public class HoroscopeHelper {
         while (jsonReader.hasNext()) {
             jsonReader.beginObject();
             Category category = new Category();
-                int id = 0;
+            int id = 0;
             while (jsonReader.hasNext()) {
                 switch (jsonReader.nextName()) {
                     case "id":
@@ -102,8 +102,8 @@ public class HoroscopeHelper {
                     case "scores":
                         jsonReader.beginArray();
                         int i = 0;
-                            int identifier = context.getResources().getIdentifier("subcategory" + id, "array", context.getPackageName());
-                            List<String> attributes = Arrays.asList(context.getResources().getStringArray(identifier));
+                        int identifier = context.getResources().getIdentifier("subcategory" + id, "array", context.getPackageName());
+                        List<String> attributes = Arrays.asList(context.getResources().getStringArray(identifier));
                         while (jsonReader.hasNext()) {
                             category.getAttributes().put(attributes.get(i++), jsonReader.nextInt());
                         }
