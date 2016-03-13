@@ -34,7 +34,7 @@ public class CategoryPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public CharSequence getPageTitle(int position) {
-        int identifier = context.getResources().getIdentifier(horoscope.getCategories().get(position).getName(), "string", context.getPackageName());
+        int identifier = context.getResources().getIdentifier(horoscope.getCategories().get(position).getId(), "string", context.getPackageName());
         return context.getResources().getString(identifier);
     }
 }

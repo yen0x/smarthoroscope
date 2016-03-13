@@ -16,25 +16,25 @@
         <item>Vierge</item>
     </string-array>
 
-    <string-array name="love_category">
+    <string-array name="subcategory0">
         <item >Rencontres</item>
         <item >Conjoint</item>
         <item >Passion</item>
         <item >Sexe</item>
     </string-array>
-    <string-array name="mood_category">
+    <string-array name="subcategory1">
         <item >Sociabilité</item>
         <item >Emotions</item>
         <item >Optimisme</item>
         <item >Confiance</item>
     </string-array>
-    <string-array name="job_category">
+    <string-array name="subcategory2">
         <item >Environnement</item>
         <item >Collaborateurs</item>
         <item >Hiérarchie</item>
         <item >Surmenage</item>
     </string-array>
-    <string-array name="health_category">
+    <string-array name="subcategory3">
         <item >Psychisme</item>
         <item >Energie</item>
         <item >Forme Sportive</item>

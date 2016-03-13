@@ -1,27 +1,29 @@
 package com.horoscope.yenox.smarthoroscope;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-
 import android.widget.Toast;
 
 import com.horoscope.yenox.smarthoroscope.adapters.CategoryPagerAdapter;
 import com.horoscope.yenox.smarthoroscope.fragments.CategoryFragment;
 import com.horoscope.yenox.smarthoroscope.helpers.HoroscopeHelper;
 import com.horoscope.yenox.smarthoroscope.models.Category;
-import com.horoscope.yenox.smarthoroscope.models.ui.CategoryContent;
 import com.horoscope.yenox.smarthoroscope.models.Horoscope;
+import com.horoscope.yenox.smarthoroscope.models.ui.CategoryContent;
+
+import java.text.DateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 public class HoroscopeActivity extends AppCompatActivity
         implements CategoryFragment.OnListFragmentInteractionListener {
@@ -50,12 +52,16 @@ public class HoroscopeActivity extends AppCompatActivity
         String sign = intent.getStringExtra("sign");
         Horoscope horoscope = HoroscopeHelper.retrieveHoroscope(this, sign);
 
+        String displayLanguage = Locale.getDefault().getISO3Language();
+        DateFormat dateFormat = DateFormat.getDateInstance(DateFormat.DEFAULT, new Locale(displayLanguage));
+        this.setTitle(sign + " - " + dateFormat.format(new Date()));
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tablayout);
         for (Category cat : horoscope.getCategories()) {
-            tabLayout.addTab(tabLayout.newTab().setText(cat.getName()));
+            tabLayout.addTab(tabLayout.newTab().setText(cat.getId()));
         }
 
         // Create the adapter that will return a fragment for each of the sections

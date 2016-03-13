@@ -45,7 +45,7 @@ public class CategoryFragment extends Fragment {
     public static CategoryFragment newInstance(Category category) {
         CategoryFragment fragment = new CategoryFragment();
         Bundle args = new Bundle();
-        args.putString(ARG_SECTION_CATEGORY, category.getName());
+        args.putString(ARG_SECTION_CATEGORY, category.getId());
         ArrayList<String> nameList = new ArrayList<>();
         for(Map.Entry<String, Integer> attr : category.getAttributes().entrySet()) {
             nameList.add(attr.getKey());

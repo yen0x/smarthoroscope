@@ -8,14 +8,18 @@ import java.util.Map;
  */
 public class Category {
 
-    private String name;
+    private String id;
 
     private int score;
 
     private final Map<String, Integer> attributes = new LinkedHashMap<>();
 
-    public Category(String name) {
-        this.name = name;
+    public Category() {
+
+    }
+
+    public Category(String id) {
+        this.id = id;
     }
 
     public void addAttr(String aName, int aScore) {
@@ -31,7 +35,11 @@ public class Category {
         return attributes;
     }
 
-    public String getName() {
-        return name;
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }
