@@ -6,6 +6,7 @@ import android.util.JsonReader;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.annimon.stream.Optional;
 import com.horoscope.yenox.smarthoroscope.R;
 import com.horoscope.yenox.smarthoroscope.models.Category;
 import com.horoscope.yenox.smarthoroscope.models.Horoscope;
@@ -27,14 +28,14 @@ import java.util.List;
  */
 public class HoroscopeHelper {
 
-    public static Horoscope retrieveHoroscope(Context context, String name) {
+    public static Optional<Horoscope> retrieveHoroscope(Context context, String name) {
 
         try {
             return getHoroscopeFromNetwork(context, name);
         } catch (Exception e) {
-            Toast.makeText(context, "error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+            Log.e("retrieveHoroscope", e.getMessage());
+            return null;
         }
-        return mockedUpData(context, name);
     }
 
     private static Horoscope mockedUpData(Context context, String name) {
@@ -52,15 +53,19 @@ public class HoroscopeHelper {
         return horoscope;
     }
 
-    private static Horoscope getHoroscopeFromNetwork(Context context, String signName) throws IOException, JSONException {
+    private static Optional<Horoscope> getHoroscopeFromNetwork(Context context, String signName) throws IOException, JSONException {
         try {
             URL url = new URL(String.format(context.getString(R.string.horoscope_url, null),//
                     signName, new SimpleDateFormat("yyyyMMdd").format(new Date())));
             AsyncTask<URL, Void, InputStream> httpget = new NetworkGetTask().execute(url);
-            return buildFromJson(context, httpget.get());
+            InputStream stream = httpget.get();
+            if (stream == null) {
+                return Optional.empty();
+            }
+            return Optional.of(buildFromJson(context, stream));
         } catch (Exception e) {
             Log.e("HoroscopeGet", e.getMessage());
-            return null;
+            return Optional.empty();
         }
     }
 

@@ -14,6 +14,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import com.annimon.stream.Optional;
 import com.horoscope.yenox.smarthoroscope.adapters.CategoryPagerAdapter;
 import com.horoscope.yenox.smarthoroscope.fragments.CategoryFragment;
 import com.horoscope.yenox.smarthoroscope.helpers.HoroscopeHelper;
@@ -50,7 +51,13 @@ public class HoroscopeActivity extends AppCompatActivity
 
         Intent intent = getIntent();
         String sign = intent.getStringExtra("sign");
-        Horoscope horoscope = HoroscopeHelper.retrieveHoroscope(this, sign);
+        Optional<Horoscope> horoscope = HoroscopeHelper.retrieveHoroscope(this, sign);
+
+        if(!horoscope.isPresent()) {
+            Toast.makeText(this, getString(R.string.get_horoscope_error), Toast.LENGTH_LONG).show();
+            finish();
+            return;
+        }
 
         String displayLanguage = Locale.getDefault().getISO3Language();
         DateFormat dateFormat = DateFormat.getDateInstance(DateFormat.DEFAULT, new Locale(displayLanguage));
@@ -60,12 +67,12 @@ public class HoroscopeActivity extends AppCompatActivity
         setSupportActionBar(toolbar);
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tablayout);
-        for (Category cat : horoscope.getCategories()) {
+        for (Category cat : horoscope.get().getCategories()) {
             tabLayout.addTab(tabLayout.newTab().setText(cat.getId()));
         }
 
         // Create the adapter that will return a fragment for each of the sections
-        mCategoryPagerAdapter = new CategoryPagerAdapter(getSupportFragmentManager(), horoscope, this);
+        mCategoryPagerAdapter = new CategoryPagerAdapter(getSupportFragmentManager(), horoscope.get(), this);
 
         // Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) findViewById(R.id.container);

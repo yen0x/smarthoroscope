@@ -60,4 +60,7 @@
 
     <!-- urls -->
     <string name="horoscope_url">http://yenox.eu:8200/stats?sign=%%s&amp;date=%%s</string>
+
+    <!-- errors -->
+    <string name="get_horoscope_error">Impossible de récupérer votre horoscope. Êtes-vous connecté ?</string>
 </resources>
