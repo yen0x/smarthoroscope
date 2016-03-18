@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">SmartHoroscope</string>
+    <string name="app_name">Smart Horoscope</string>
 
     <string-array name="sign_names">
         <item>Balance</item>
