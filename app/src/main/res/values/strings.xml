@@ -2,18 +2,18 @@
     <string name="app_name">Smart Horoscope</string>
 
     <string-array name="sign_names">
-        <item>Balance</item>
         <item>Bélier</item>
-        <item>Cancer</item>
-        <item>Capricorne</item>
+        <item>Taureau</item>
         <item>Gémeaux</item>
+        <item>Cancer</item>
         <item>Lion</item>
-        <item>Poisson</item>
+        <item>Vierge</item>
+        <item>Balance</item>
         <item>Scorpion</item>
         <item>Sagittaire</item>
-        <item>Taureau</item>
+        <item>Capricorne</item>
         <item>Verseau</item>
-        <item>Vierge</item>
+        <item>Poisson</item>
     </string-array>
 
     <string-array name="subcategory0">
